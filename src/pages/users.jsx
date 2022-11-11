@@ -1,0 +1,27 @@
+import React from "react";
+
+const Users = ({ data }) => {
+  if (!data) {
+    return <h2>No users</h2>;
+  }
+  return (
+    <div>
+      <ul>
+        {data.map((user) => (
+          <li key={user.id.value}>
+            {user.name.title} {user.name.first} {user.name.last}
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+};
+
+export async function getServerSideProps() {
+  const res = await fetch("https://randomuser.me/api?results=5");
+  const data = await res.json();
+
+  return { props: { data: data.results } };
+}
+
+export default Users;
