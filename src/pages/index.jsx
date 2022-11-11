@@ -9,6 +9,9 @@ export default function Home() {
       <h3>
         <Link href="/users">Go to users page</Link>
       </h3>
+			<h3>
+        <Link href="/user-static">Go to user-static page</Link>
+      </h3>
     </Layout>
   );
 }
