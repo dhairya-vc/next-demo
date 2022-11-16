@@ -10,7 +10,6 @@ export default withSession(async (req, res) => {
     const { login, avatar_url: avatarUrl } = await fetchJson(url);
     const user = { isLoggedIn: true, login, avatarUrl };
     req.session.set("user", user);
-    console.log(req.session);
     await req.session.save();
     res.json(user);
   } catch (error) {

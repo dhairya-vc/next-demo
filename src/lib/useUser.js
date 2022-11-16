@@ -1,6 +1,7 @@
-import { useEffect } from "react";
 import Router from "next/router";
+import { useEffect } from "react";
 import useSWR from "swr";
+
 import fetcher from "./fetchJson";
 
 export default function useUser({

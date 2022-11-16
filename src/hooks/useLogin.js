@@ -21,7 +21,7 @@ const useLogin = () => {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify(body),
-        })
+        }),
       );
     } catch (error) {
       console.error("An unexpected error happened:", error);
@@ -33,7 +33,7 @@ const useLogin = () => {
       mutateUser(
         await fetcher("/api/logout", {
           method: "POST",
-        })
+        }),
       );
     } catch (error) {
       console.error("An unexpected error happened:", error);
