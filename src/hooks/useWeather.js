@@ -17,6 +17,21 @@ const useWeather = () => {
     });
   };
 
+  async function fetchWeather(location) {
+    setLoading(true);
+
+    try {
+      const apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${location.lat}&lon=${location.long}&units=metric&appid=ab751d80e1e02084316b33160d5f56f5`;
+
+      const data = await fetcher(apiUrl);
+      setWeather(data);
+    } catch (error) {
+      console.error("TCL ~ fetchWeather ~ error", error);
+    }
+
+    setLoading(false);
+  }
+
   useEffect(() => {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(locationSuccess, () => {
@@ -28,20 +43,12 @@ const useWeather = () => {
   }, []);
 
   useEffect(() => {
-    async function fetchWeather() {
-      const apiUrl =
-        "https://api.openweathermap.org/data/2.5/weather?lat=23.0162432&lon=72.4762624&units=metric&appid=ab751d80e1e02084316b33160d5f56f5";
-
-      const data = await fetcher(apiUrl);
-
-      setWeather(data);
-      setLoading(false);
+    if (location.lat && location.long) {
+      fetchWeather(location);
     }
-
-    fetchWeather();
   }, [location]);
 
-  return { weather, loading };
+  return { location, weather, loading, fetchWeather };
 };
 
 export default useWeather;

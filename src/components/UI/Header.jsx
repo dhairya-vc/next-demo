@@ -1,18 +1,19 @@
-import useLogin from "../../hooks/useLogin";
+import ProfileCard from "./ProfileCard";
 
-import Button from "./Button";
+import { Input } from "./index";
 
 const Header = () => {
-  const { handleLogout } = useLogin();
-
   return (
-    <header className="shadow py-2 px-8 sticky top-0 bg-white">
-      <div className="ml-auto w-[80px]">
-        <Button
-          title="Logout"
-          onClick={handleLogout}
-          className="rounded-full bg-black text-white font-semibold"
-        />
+    <header className="shadow py-2 px-8 sticky top-0 bg-white grid grid-cols-3 items-center">
+      <h2 className="font-bold text-3xl text-gray-600">News.co</h2>
+
+      <Input
+        inputClassName="bg-slate-50 rounded-lg border shadow outline-none"
+        placeholder="Search"
+      />
+
+      <div className="ml-auto">
+        <ProfileCard />
       </div>
     </header>
   );

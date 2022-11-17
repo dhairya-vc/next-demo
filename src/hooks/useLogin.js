@@ -10,6 +10,11 @@ const useLogin = () => {
   });
 
   const [username, setUsername] = useState("");
+  const [isProfileOpen, setIsProfileOpen] = useState(false);
+
+  const toggleProfileCard = () => {
+    setIsProfileOpen((val) => !val);
+  };
 
   async function handleSubmit() {
     const body = {
@@ -40,7 +45,14 @@ const useLogin = () => {
     }
   }
 
-  return { handleSubmit, username, setUsername, handleLogout };
+  return {
+    isProfileOpen,
+    username,
+    handleSubmit,
+    toggleProfileCard,
+    setUsername,
+    handleLogout,
+  };
 };
 
 export default useLogin;

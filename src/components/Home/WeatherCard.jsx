@@ -1,16 +1,20 @@
 import Image from "next/image";
+import { MdRefresh } from "react-icons/md";
 import Skeleton from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 import useWeather from "../../hooks/useWeather";
 
 const WeatherCard = () => {
-  const { weather, loading } = useWeather();
+  const { location, weather, loading, fetchWeather } = useWeather();
 
   return (
     <div className="p-4 shadow rounded-xl border">
-      <h3 className="font-medium text-xl pb-2 border-b text-gray-500">
-        {loading ? <Skeleton /> : weather.name}
+      <h3 className="font-medium text-xl pb-2 border-b text-gray-500 flex items-center justify-between">
+        <span>{loading ? <Skeleton /> : weather.name}</span>
+        <span onClick={() => fetchWeather(location)} className="cursor-pointer">
+          <MdRefresh />
+        </span>
       </h3>
       <div className="flex gap-4 justify-between items-center">
         <div className="flex flex-col">
