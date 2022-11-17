@@ -12,7 +12,7 @@ const ProfileCard = () => {
       <div className="cursor-pointer rounded-full" onClick={toggleProfileCard}>
         <Image
           className="rounded-full"
-          src={user.avatarUrl}
+          src={user?.avatarUrl}
           width={40}
           height={40}
           alt="user profile"

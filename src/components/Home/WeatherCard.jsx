@@ -7,6 +7,7 @@ import useWeather from "../../hooks/useWeather";
 
 const WeatherCard = () => {
   const { location, weather, loading, fetchWeather } = useWeather();
+  if (!weather) return;
 
   return (
     <div className="p-4 shadow rounded-xl border">
